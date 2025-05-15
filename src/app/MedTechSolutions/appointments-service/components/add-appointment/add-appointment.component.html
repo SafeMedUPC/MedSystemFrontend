@@ -1,0 +1,86 @@
+<div id="stepper-container">
+  <mat-stepper [linear]="isLinear" #stepper>
+    <!-- Primer paso: Detalles de la cita -->
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>Appointment Details</ng-template>
+        <div class="form-group">
+          <label for="reason">Reason:</label>
+          <input id="reason" type="text" formControlName="reason" placeholder="Enter reason" required />
+        </div>
+        <div class="form-group">
+          <label for="speciality">Speciality:</label>
+          <select id="speciality" formControlName="speciality" required>
+            <option value="" disabled selected>Select a speciality</option>
+            <option *ngFor="let specialty of availableSpecialties" [value]="specialty">{{ specialty }}</option>
+          </select>
+        </div>
+        <div class="button-container">
+          <button type="button" class="btn-next" (click)="stepper.next()" [disabled]="!firstFormGroup.valid">Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <!-- Segundo paso: Selección de doctor -->
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Choose your doctor</ng-template>
+        <div class="form-group">
+          <label for="doctor">Choose a doctor:</label>
+          <select id="doctor" formControlName="doctor" required>
+            <option value="" disabled selected>Select a doctor</option>
+            <option *ngFor="let doctor of filteredDoctors" [value]="doctor.id">
+              {{ doctor.firstName }} {{ doctor.lastName }}
+            </option>
+          </select>
+        </div>
+        <div class="button-container">
+          <button type="button" class="btn-back" matStepperPrevious>Back</button>
+          <button type="button" class="btn-next" (click)="stepper.next()" [disabled]="!secondFormGroup.valid">Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <!-- Tercer paso: Selección de fecha y hora -->
+    <mat-step [stepControl]="thirdFormGroup">
+      <form [formGroup]="thirdFormGroup">
+        <ng-template matStepLabel>Select Date and Time</ng-template>
+        <div class="form-group">
+          <label for="calendar">Choose a date:</label>
+          <mat-calendar
+            class="custom-calendar"
+            (selectedChange)="onDateSelected($event)"
+            [selected]="selectedDate"
+          ></mat-calendar>
+        </div>
+        <div class="form-group">
+          <label for="time">Choose a time:</label>
+          <select id="time" formControlName="time" required>
+            <option value="" disabled selected>Select a time</option>
+            <option *ngFor="let time of availableTimes" [value]="time">{{ time }}</option>
+          </select>
+        </div>
+        <div class="button-container">
+          <button type="button" class="btn-back" matStepperPrevious>Back</button>
+          <button type="button" class="btn-next" (click)="stepper.next()" [disabled]="!thirdFormGroup.valid">Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <!-- Cuarto paso: Resumen -->
+    <mat-step>
+      <ng-template matStepLabel>Review and Confirm</ng-template>
+      <div class="summary">
+        <p><strong>Reason:</strong> {{ firstFormGroup.get('reason')?.value }}</p>
+        <p><strong>Speciality:</strong> {{ firstFormGroup.get('speciality')?.value }}</p>
+        <p><strong>Doctor:</strong> {{ selectedDoctorFirstName }} {{ selectedDoctorLastName }}</p>
+        <p><strong>Date:</strong> {{ selectedDate | date }}</p>
+        <p><strong>Time:</strong> {{ thirdFormGroup.get('time')?.value }}</p>
+      </div>
+      <div class="button-container">
+        <button type="button" class="btn-backA" matStepperPrevious>Back</button>
+        <button type="button" class="btn-submit" (click)="createAppointment()">Submit</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+</div>

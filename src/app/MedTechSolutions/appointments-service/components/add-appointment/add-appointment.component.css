@@ -1,0 +1,108 @@
+/* Contenedor principal */
+#stepper-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Formularios */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+#stepper-container label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#stepper-container input,
+#stepper-container select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+#stepper-container input:focus,
+#stepper-container select:focus {
+  border-color: #3f51b5;
+  outline: none;
+}
+
+/* Botones */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+#stepper-container button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#stepper-container .btn-next {
+  background-color: #3f51b5;
+  color: white;
+}
+
+#stepper-container .btn-next:hover {
+  background-color: #303f9f;
+}
+
+#stepper-container .btn-back {
+  background-color: #f44336;
+  color: white;
+}
+
+#stepper-container .btn-back:hover {
+  background-color: #d32f2f;
+}
+
+#stepper-container .btn-submit {
+  background-color: #4caf50;
+  color: white;
+}
+
+#stepper-container .btn-submit:hover {
+  background-color: #45a049;
+}
+
+/* Resumen */
+#stepper-container .summary {
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  #stepper-container {
+    padding: 15px;
+  }
+
+  form {
+    gap: 15px;
+  }
+
+  #stepper-container button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}

@@ -1,0 +1,9 @@
+/* monitoring-service.component.css */
+.btn-verde {
+  background-color: #28a745; /* verde bootstrap */
+  color: green;
+}
+
+.btn-verde:hover {
+  background-color: #218838;
+}

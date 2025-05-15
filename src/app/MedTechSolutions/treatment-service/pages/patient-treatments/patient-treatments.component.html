@@ -1,0 +1,40 @@
+<div class="main-container">
+  <div class="content-wrapper">
+    <!-- Loading Spinner -->
+    <div *ngIf="loading" class="loading-spinner">
+      Loading...
+    </div>
+
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="alert alert-error">
+      {{ errorMessage }}
+    </div>
+
+    <!-- Treatments Section -->
+    <div class="card treatments-card">
+      <h2>My Treatments</h2>
+      <div class="treatments-grid">
+        <div *ngFor="let treatment of treatments"
+             class="treatment-item"
+             [class.selected]="selectedTreatment === treatment"
+             (click)="selectTreatment(treatment)">
+          <h3>{{ treatment.treatmentName }}</h3>
+
+          <p class="period"><strong>Period:</strong> {{ treatment.period }}</p>
+        </div>
+        <div *ngIf="treatments.length === 0 && !loading" class="no-data">
+          No treatments found.
+        </div>
+      </div>
+    </div>
+
+    <!-- Treatment Details -->
+    <div class="card details-card" *ngIf="selectedTreatment">
+      <h2>Treatment Details</h2>
+      <div class="treatment-details">
+        <h3>{{ selectedTreatment.treatmentName }}</h3>
+        <p>{{ selectedTreatment.description }}</p>
+      </div>
+    </div>
+  </div>
+</div>
