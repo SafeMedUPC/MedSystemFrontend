@@ -16,7 +16,7 @@ import {UpdateExamComponent} from './MedTechSolutions/exams-service/components/u
 import {ExamsLaboratoryComponent} from './MedTechSolutions/exams-service/pages/laboratory/exams-laboratory.component';
 import {ExamsPatientComponent} from './MedTechSolutions/exams-service/pages/patient/exams-patient.component';
 import {UpdateAppointmentComponent} from './MedTechSolutions/appointments-service/components/update-appointment/update-appointment.component';
-import {MonitoringComponent} from './MedTechSolutions/monitoring-service/monitoring-service.component';
+import {MonitoringComponent} from './MedTechSolutions/monitoring-service/components/monitoring-service.component';
 
 
 const routes: Routes = [

@@ -1,0 +1,26 @@
+<div style="max-width: 800px; margin: auto;">
+
+  <h2>Monitoreo de Frecuencia Cardiaca</h2>
+
+  <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 30px;">
+    <img [src]="patient.photo" alt="Paciente" width="100" height="100" style="border-radius: 50%;" />
+    <div>
+      <h3>{{ patient.name }}</h3>
+      <p><strong>ID:</strong> {{ patient.id }}</p>
+      <p><strong>Edad:</strong> {{ patient.age }} años</p>
+      <p><strong>Sexo:</strong> {{ patient.gender }}</p>
+    </div>
+  </div>
+
+  <button mat-raised-button color="warn" (click)="resetData()">Reiniciar</button>
+
+  <div style="margin-top: 20px;">
+    <canvas baseChart
+
+            [data]="lineChartData"
+            [options]="lineChartOptions"
+            [type]="'line'">
+    </canvas>
+  </div>
+
+</div>
